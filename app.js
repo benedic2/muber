@@ -6,8 +6,19 @@ const app = express();
 
 mongoose.Promise = global.Promise;
 
+    const uristring =
+    process.env.MONGOLAB_URI ||
+    process.env.MONGOHQ_URL ||
+    'mongodb://localhost/muber';
+
 if(process.env.NODE_ENV !=='test'){
-    mongoose.connect('mongodb://localhost/muber');
+    mongoose.connect(uristring, function (err, res) {
+        if (err) {
+            console.log('Error connecting to:' + uristring + '.' + err);
+        } else {
+            console.log('suceeded connected to:' uristring);
+        }
+    });
 }
 
 app.use(bodyParser.json());
