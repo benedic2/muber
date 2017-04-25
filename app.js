@@ -9,6 +9,7 @@ mongoose.Promise = global.Promise;
     const uristring =
     process.env.MONGOLAB_URI ||
     process.env.MONGOHQ_URL ||
+    'mongodb://heroku_fmdjkv07:sfg2sap@ds117821.mlab.com:17821/heroku_fmdjkv07' ||
     'mongodb://localhost/muber';
 
 const theport = process.env.PORT || 3050;
