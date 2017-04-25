@@ -11,13 +11,15 @@ mongoose.Promise = global.Promise;
     process.env.MONGOHQ_URL ||
     'mongodb://localhost/muber';
 
+const theport = process.env.PORT || 3050;
+
 if(process.env.NODE_ENV !=='test'){
     mongoose.connect(uristring, function (err, res) {
-        if (err) {
-            console.log('Error connecting to:' + uristring + '.' + err);
-        } else {
-            console.log('suceeded connected to:' uristring);
-        }
+      if (err) {
+      console.log ('ERROR connecting to: ' + uristring + '. ' + err);
+      } else {
+      console.log ('Succeeded connected to: ' + uristring);
+      }
     });
 }
 
